@@ -1,0 +1,101 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+  </head>
+  <body>
+  	
+    <!-- END nav -->
+
+    <section class="home-slider owl-carousel img" style="background-image: url({% static 'images/bg_1.jpg' %});">
+
+      <div class="slider-item" style="background-image: url({% static 'images/bg_3.jpg' %});">
+      	<div class="overlay"></div>
+        <div class="container">
+          <div class="row slider-text justify-content-center align-items-center">
+
+            <div class="col-md-7 col-sm-12 text-center ftco-animate">
+            	<h1 class="mb-3 mt-5 bread">Sign Up</h1>
+	            <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>Sign Up</span></p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ftco-section contact-section">
+      <div class="container mt-5">
+        <div class="row block-9">
+					<div class="col-md-12 contact-info ftco-animate">
+						<div class="row">
+							
+	            
+	          
+	          
+						</div>
+					</div>
+					<div class="col-md-1"></div>
+          <div class="col-md-12 ftco-animate">
+            <div class="row">
+              <div class="col-md-12">
+                {% if msg %}
+                <b style="color: orange">{{msg}}</b>
+                {% endif %}
+            <form class="contact-form" method="post"
+            action="{% url 'signup'%}" enctype="multipart/form-datae">
+            {% csrf_token %}
+	                <div class="form-group">
+                    <select name="usertype">
+                      <option >---Select User Type---</option>
+                      <option value="buyer">Buyer</option>
+                      <option value="seller">Seller</option>
+
+                    </select>
+
+                    <div class="form-group">
+                    <label for="fname">First Name</label>
+	                  <input type="text" class="form-control" placeholder="Enter Your Name" name="fname">
+	                
+                    <label for="laname">Last Name :</label>
+	                  <input type="text" class="form-control" placeholder="Enter Your Last Name" name="lname">
+	              
+                    <label for="email">Email :</label>
+                    <input type="text" class="form-control" placeholder="Enter Your Email" name="email">
+
+                    <label for="mobile">Mobile No :</label>
+                    <input type="text" class="form-control" placeholder="Enter Your Mobile Number" name="mobile">
+             
+                    <label for="address">Address :</label>
+                    <textarea id="" cols="30" rows="7" class="form-control" placeholder="Enter Your Address" name="address"></textarea>
+                    <br>
+                    <br>
+                    <label for="" class="radio_lable">Enter Your Gender</label>
+                    <br>
+                    <input type="radio" name="Gender" id="male" value="male" class="radio-btn">Male
+                    <input type="radio" name="Gender" id="female" value="male" class="radio-btn">Female
+                    <br>
+                    <br>
+                    <label for="password">Password :</label>
+                    <input type="text" class="form-control" placeholder="Enter Your Password" name="password">
+
+                    <label for="mobile">Confirm Password :</label>
+                    <input type="text" class="form-control" placeholder="Enter Your Confirm Password" name="cpassword">
+              </div>
+              <div class="form-group">
+                <input type="submit" value="Sign Up" class="btn btn-primary py-3 px-5">
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div id="map"></div>
+    
+  </body>
+</html>
+{% endblock %}

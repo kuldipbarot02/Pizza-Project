@@ -1,0 +1,113 @@
+{% extends 'seller-header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+  </head>
+  <body>
+  	
+    <!-- END nav -->
+
+    <section class="home-slider owl-carousel img" style="background-image: url({% static 'images/bg_1.jpg' %});">
+
+      <div class="slider-item" style="background-image: url({% static 'images/bg_3.jpg' %});">
+      	<div class="overlay"></div>
+        <div class="container">
+          <div class="row slider-text justify-content-center align-items-center">
+
+            <div class="col-md-7 col-sm-12 text-center ftco-animate">
+            	<h1 class="mb-3 mt-5 bread">Add Pizza</h1>
+	            <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>Add Pizza</span></p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ftco-section contact-section">
+      <div class="container mt-5">
+        <div class="row block-9">
+					<div class="col-md-12 contact-info ftco-animate">
+						<div class="row">
+							
+	            
+	          
+	          
+						</div>
+					</div>
+					<div class="col-md-1"></div>
+          <div class="col-md-12 ftco-animate">
+            <div class="row">
+              <div class="col-md-12">
+                {% if msg %}
+                <b style="color: orange">{{msg}}</b>
+                {% endif %}
+            <form class="contact-form" method="post"
+            action="{% url 'seller-add-pizza' %}" enctype="multipart/form-data">
+            {% csrf_token %}
+                    <div class="form-group">
+                    <select name="pizza_category" class="form-control" id="pizza_category">
+                    <option 
+                    >---Select Category---</option>
+                    <option value="veg">Veg</option>
+                    <option value="burger">Burger</option>
+                    <option value="paratha">Paratha</option>
+                    <option value="pizza_mania">Pizza Mania</option>
+
+                    </select>
+                    
+                    <div class="form-group">
+                        <select name="pizza_types" class="form-control" >
+                        <option >---Select Types---</option>
+                        <option value="Farmhouse_pizza">Farmhouse Pizza</option>
+                        <option value="Peppy_paneer_pizza">Peppy Paneer Pizza</option>
+                        <option value="Mexican_green_wave_pizza">Mexican Green Wave Pizza</option>
+                        <option value="Deluxe_veggie_pizza">Deluxe Veggie Pizza</option>
+                        <option value="Classic_burger_pizza">Classic Burger Pizza</option>
+                        <option value="Premium_burger_pizza">Premium Burger Pizza</option>
+                        <option value="Corn_n_cheese_paratha_pizza">Corn N Cheese Paratha Pizza</option>
+                        <option value="Paneer_paratha_pizza">Paneer Paratha Pizza</option>
+                        <option value="Cheesy_pizza">Cheesy Pizza</option>
+                        <option value="Paneer_&_onion_pizza">Paneer & Onion Pizza</option>
+                        <option value="Golden_corn_pizza">Golden Corn Pizza</option>
+                        <option value="Cheese_n_tomato_pizza">Cheese N Tomato Pizza</option>
+    
+                        </select>
+
+  
+
+                    <div class="form-group">
+                    <label for="pizza_price">Pizza Price</label>
+	                  <input type="text" class="form-control" placeholder="Enter Pizza Price" name="pizza_price">
+
+                    <div class="form-group">
+                      <select name="pizza_size" class="form-control" >
+                        <option >---Select size---</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+  
+                      </select>
+                     
+                      <div class="form-group">
+                      Pizza Pic:<input type="file" class="form-control" name="pizza_pic">
+                        
+              </div>
+              <div class="col-md-6 d-flex">
+                <input type="submit" value="Add Pizza" class="btn btn-primary py-3 px-5">
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div id="map"></div>
+    
+  </body>
+</html>
+{% endblock %}
